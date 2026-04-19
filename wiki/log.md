@@ -9,6 +9,10 @@ sources: []
 
 # Operation log
 
+## [2026-04-19 00:00] query "can you share one quote from a book I have read"
+- Pages consulted: 3 (wiki/index.md, wiki/learning/index.md, wiki/learning/books/siddhartha.md)
+- Saved to: not saved
+
 Append-only chronological record of every wiki operation. Newest at bottom. Format: `## [YYYY-MM-DD HH:MM] <op>` followed by a bulleted summary of what changed.
 
 Use `/lint-wiki` to audit; use `/query` to ask questions; use `/ingest-url`, `/ingest-file`, `/process-inbox` to add material.
