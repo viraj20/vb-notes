@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Obsidian per-machine state
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/hotkeys.json
+
+# Soft-delete bin — per CLAUDE.md, .trash/ is a 30-day reversible recycle; not content
+.trash/
+
+# Claude Code per-machine session state
+.claude/projects/
+
+# Syncthing conflict stragglers (just in case)
+*.sync-conflict-*
+
+# Lint output artifacts are per-run; keep /output/ structure but ignore contents
+output/lint-*.md
+output/vault-audit-*.md

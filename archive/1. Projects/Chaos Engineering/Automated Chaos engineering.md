@@ -1,0 +1,46 @@
+## Chaos Service Mesh
+- Fault Simulations
+	- Pod
+		- pod fail, container kill, pod failure
+	- network
+		- partition, bandwidth, net emulation
+		- DNS
+		- Http
+		- Stress
+		- IO
+	- io
+- RBAC based security
+- JVM chaos
+- chaosd for non-k8s nodes
+- Yaml support
+- Workflow
+	- Experiment
+		- Single 
+		- Parallel
+		- Serial
+		- Custom
+		- Check experiments & results
+		- Pause Experiments
+		- Can be scoped
+- Visualized operations
+- 
+- 2019
+- Authenticated
+- GUI
+- k8 based
+- cloud native
+	- AWS chaos
+- multiple mixing experiments
+- Arch
+	- Dashboard
+	- controller 
+	- daemon
+		- 24x7
+		- privileged permissions
+		- Application process
+		- namespace
+		- cGroup
+
+
+# Gremlin
+- 

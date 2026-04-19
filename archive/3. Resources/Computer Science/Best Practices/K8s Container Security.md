@@ -1,0 +1,11 @@
+- Enable PSS
+- Disable ServiceAccount token mounts
+- Do not allow privileged escalation
+- Restrict the use of hostPath
+- Do not run processes in containers as root
+- read-only root file system
+- Disable service discovery
+- Never run Docker in Docker or mount the socket in the container
+- Restrict the containers that can run as privileged
+- Consider add/dropping Linux capabilities before writing seccomp policies
+- Scan images for vulnerabilities regularly

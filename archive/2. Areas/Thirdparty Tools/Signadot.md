@@ -1,0 +1,4 @@
+- how are databases changes handled?
+- consolidate environments
+- sandboxes
+- 

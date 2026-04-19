@@ -1,0 +1,17 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "week": "text",
+    "start_date": "date",
+    "status": "text",
+    "end_date": "date",
+    "completion": "number",
+    "Expense": "number",
+    "dri": "multitext",
+    "progress": "number",
+    "created_date": "date",
+    "date": "text"
+  }
+}

@@ -1,0 +1,7 @@
+- Economic moat is a competitive advantage that one company has over other companies in the same industry
+- An example would be to provide low cost advantage such as cheap raw materials
+- Cost
+- Size
+- high switching costs
+- intangibles, patents brands, licenses
+- soft moats, leadership, management, culture

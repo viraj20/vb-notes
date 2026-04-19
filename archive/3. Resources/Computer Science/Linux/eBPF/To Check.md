@@ -1,0 +1,9 @@
+- Pixie
+- Hubble cillium
+- Auto Instrumentation
+- kubectl trace for bcc tooling
+- OpenTel auto instrumentation
+- spectra meltdown
+- Frame pointers
+- custom stack walking
+- 

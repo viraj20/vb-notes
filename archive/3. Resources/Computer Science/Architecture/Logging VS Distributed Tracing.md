@@ -1,0 +1,8 @@
+- Distributed tracing helps to identify the flow across the system.
+- Logging helps to figure out more about a specifix system.
+- So distributed tracing can be used to identify where the issue is in the entire systems and logging would then help to know what that issue is exactly.
+- Distributed tracing can generate a lot of data.
+- Logs are generally given sev INFO, DEBUG, ERROR, CRITICAL based on the context of the individual logs.
+- Implementation 
+	- In distributed tracing the same context is sent across the system to identify the requests responses across different microservices.
+	- Logging is implemented using libs. 

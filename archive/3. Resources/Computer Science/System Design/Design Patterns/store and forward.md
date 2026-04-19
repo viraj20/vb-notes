@@ -1,0 +1,1 @@
+ Instead of sending the data directly to the downstream server, we store it locally or elsewhere.

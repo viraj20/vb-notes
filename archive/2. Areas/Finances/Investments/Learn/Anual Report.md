@@ -1,0 +1,3 @@
+- check the directors / managements report
+- check share holding patterns of promoters
+- Financials

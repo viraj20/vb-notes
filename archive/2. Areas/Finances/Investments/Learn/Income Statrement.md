@@ -1,0 +1,5 @@
+- Shows P&L
+- Is the company growing in terms of sales and profits
+- PAT --> net profit
+- Earnings before interest, tax, amortisation, depreciation
+- Finance cost is the interest that is paid

@@ -1,0 +1,41 @@
+{
+  "spellcheck": true,
+  "trashOption": "local",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "root",
+  "userIgnoreFilters": [
+    "Templates/"
+  ],
+  "attachmentFolderPath": "Assets",
+  "propertiesInDocument": "visible",
+  "mobileToolbarCommands": [
+    "editor:set-heading",
+    "ink:create-handwritten-section",
+    "obsidian-tasks-plugin:edit-task",
+    "editor:insert-tag",
+    "editor:toggle-bullet-list",
+    "editor:toggle-numbered-list",
+    "editor:cycle-list-checklist",
+    "editor:attach-file",
+    "editor:undo",
+    "editor:fold-all",
+    "editor:insert-wikilink",
+    "editor:insert-embed",
+    "editor:toggle-bold",
+    "editor:redo",
+    "editor:toggle-italics",
+    "editor:toggle-strikethrough",
+    "editor:toggle-highlight",
+    "editor:toggle-code",
+    "editor:toggle-blockquote",
+    "editor:insert-link",
+    "editor:toggle-checklist-status",
+    "editor:indent-list",
+    "editor:unindent-list",
+    "editor:configure-toolbar",
+    "editor:insert-mathblock"
+  ],
+  "mobilePullAction": "global-search:open",
+  "tabSize": 2,
+  "readableLineLength": true
+}

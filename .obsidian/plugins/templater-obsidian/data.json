@@ -1,0 +1,55 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "Templates",
+  "templates_pairs": [
+    [
+      "",
+      ""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": false,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "1. Projects",
+      "template": "Templates/Project Template.md"
+    },
+    {
+      "folder": "3. Resources/Issues & RCA",
+      "template": "Templates/RCA.md"
+    },
+    {
+      "folder": "3. Resources/Debugging Sessions",
+      "template": "Templates/Debugging Session.md"
+    },
+    {
+      "folder": "3. Resources/Meeting Notes",
+      "template": "Templates/Meeting Notes Template.md"
+    },
+    {
+      "folder": "3. Resources/Book Notes/My Notes",
+      "template": "Templates/Book Template.md"
+    },
+    {
+      "folder": "3. Resources/PodCast",
+      "template": "Templates/Article Template.md"
+    },
+    {
+      "folder": "3. Resources/Articles",
+      "template": "Templates/Article Template.md"
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    ""
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "enable_ribbon_icon": true
+}

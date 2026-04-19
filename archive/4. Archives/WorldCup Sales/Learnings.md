@@ -1,0 +1,20 @@
+
+- Messages that were shown to the consumers could have been better
+- Keep things simple, test new changes properly. Any new change should be throughly tested before its taken live with real life scenarios.
+- Try introducing lesser changes between 2 phases.
+- Involve people from all discipline for all major calls
+- SRE
+	- Monitoring could have been better
+	- Caching is super important to scale (more the cache the better)
+	- Have an app score, that tells which app is working properly
+		- CPU 
+		- Memory
+		- Scaling policies
+		- 5xx
+		- 200
+		- response time
+		- databse calls
+	- Better debugging tools
+	- Plan for attacks before hand. Security is a big challenge
+	- Scaling is not the only problem
+	- 

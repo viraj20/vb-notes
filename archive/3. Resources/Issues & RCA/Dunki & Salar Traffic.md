@@ -1,0 +1,9 @@
+- Due to a social media compaign a lot of users came to the website at around 8pm.
+- users increased from 80k to 180k
+- Due to this there were two issues that happened
+- Members mdb started to spike to 100%
+- we increased the cpu from 8 core to 32 core, but it was actually a IOPS issue
+- There was another issue also,
+- OSP would call OFP discovery for filmy pass which was newly introduced.
+- filmypass was not a critical service but still the timeout was 1 sec and 3 retries
+- this caused OSP to start failing
