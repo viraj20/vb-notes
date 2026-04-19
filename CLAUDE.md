@@ -16,6 +16,15 @@ This schema governs every operation. Read it fully before executing any slash co
 6. **Dates:** always ISO format `YYYY-MM-DD`. Never "today," "last week," or relative dates in file content.
 7. **Log every operation** by appending to `wiki/log.md` with header `## [YYYY-MM-DD HH:MM] <op>`.
 8. **Confirm before destructive moves.** Moves into `.trash/` are reversible for 30 days; moves between `wiki/` domains should be explained in the log.
+9. **Sync to GitHub at op boundaries.** At the start of every slash command that writes files, run `git pull --rebase origin main` to pick up upstream changes (Mac's Obsidian Git may have pushed while you were idle). At the end of the command, run:
+
+   ```
+   git add -A
+   git diff --cached --quiet || git commit -m "<slash-command>: <one-line summary>"
+   git push origin main
+   ```
+
+   If `git push` fails (network/auth), append the error under the op's `wiki/log.md` entry and continue — never drop the sync silently. If `git pull --rebase` hits a conflict, stop the operation before any writes and surface the conflict; do not auto-resolve.
 
 ---
 
