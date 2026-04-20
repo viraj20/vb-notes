@@ -3,7 +3,7 @@ type: moc
 domain: work
 status: live
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-20
 sources: []
 ---
 
@@ -20,6 +20,12 @@ _Pages will appear under each section as content is ingested. Headings can be re
 ### Systems & architecture
 _(empty — populate via `/ingest-file archive/2. Areas/Arch Review/...`)_
 
+### Data architecture
+- [[concepts/medallion-data-pipeline|Medallion data pipeline]] — bronze / silver / gold
+- [[concepts/data-ontology|Data ontology]] — Palantir-style semantic layer
+- [[concepts/canonical-enum-layer|Canonical enum layer]] — schema-insulation pattern
+- [[concepts/graph-traversal-hop-depth|Graph traversal & hop depth]] — SQL link table vs graph DB
+
 ### SRE practice
 _(empty — see `archive/loose/SRE KRAs and Roles.md` for substantive seed content)_
 
@@ -30,10 +36,10 @@ _(empty — strong seeds in `archive/loose/Cold Play.md`, `ColdPlay Load Handlin
 _(empty — 12 teammate stubs in `archive/3. Resources/People/`)_
 
 ### Tools
-_(empty — `archive/2. Areas/Thirdparty Tools/`)_
+- [[tools/atomx|AtomX]] — closed-loop cashless POS platform, BMS portfolio company
 
 ### Projects
-_(empty — `archive/1. Projects/`)_
+- [[projects/atomx-ontology-design|AtomX ontology design]] — promoting the batch pipeline to a persistent medallion + ontology layer (draft)
 
 ### Meetings
 _(empty — `archive/Meeting Notes/` and `archive/3. Resources/Meeting Notes/`)_

@@ -12,6 +12,17 @@ sources: []
 ## [2026-04-20 00:00] task: TASK-001 create a doc for on ground ops
 - Created: tasks/TASK-001-create-a-doc-for-on-ground-ops.md
 
+## [2026-04-20 12:00] ingest-file sources/work/projects/on-ground/research/atomx-research.md
+- Source frontmatter added (wiki_compiled: true) to source file in place
+- Created: wiki/work/tools/atomx.md (entity — BMS portfolio, closed-loop cashless POS)
+- Created: wiki/work/concepts/medallion-data-pipeline.md (concept — bronze/silver/gold)
+- Created: wiki/work/concepts/data-ontology.md (concept — Palantir-style object/link/action model)
+- Created: wiki/work/concepts/canonical-enum-layer.md (concept — schema insulation pattern)
+- Created: wiki/work/concepts/graph-traversal-hop-depth.md (concept — SQL vs graph DB, AND collapse)
+- Created: wiki/work/projects/atomx-ontology-design.md (draft proposal — persistent medallion + ontology on Databricks)
+- Updated: wiki/work/index.md (new Data architecture section; Tools and Projects populated)
+- Domain: work (BMS portfolio company; internal tooling)
+
 ## [2026-04-19 00:00] query "can you share one quote from a book I have read"
 - Pages consulted: 3 (wiki/index.md, wiki/learning/index.md, wiki/learning/books/siddhartha.md)
 - Saved to: not saved
