@@ -1,6 +1,6 @@
 ---
 name: youtube-transcribe
-description: Extract a transcript from a YouTube URL and present it in-conversation. Triggers "youtube transcript", "extract subtitles", "get the transcript", "transcribe this video". Uses youtube-transcript-api as the primary extractor (bypasses YouTube's PO Token gate), with yt-dlp and Chrome DevTools MCP as fallbacks. Writes NOTHING to disk unless the user explicitly says save/capture.
+description: Extract a transcript from a YouTube URL, always produce a structured point summary that preserves the author's meaning/tone/intent, and present both in-conversation. Triggers "youtube transcript", "extract subtitles", "get the transcript", "transcribe this video". Uses youtube-transcript-api as primary, with yt-dlp and Chrome DevTools MCP as fallbacks. Writes NOTHING to disk unless the user explicitly says save/capture — on save, the summary + transcript go into a single source file with wiki_compiled:false, leaving `/ingest-url` to do the wiki compilation.
 ---
 
 # YouTube Transcript Extraction
@@ -128,7 +128,7 @@ Only use if `youtube-transcript-api` failed (e.g., "no transcripts available", o
 
 (Use `~/.local/bin/yt-dlp` to bypass the broken `/usr/local/bin/yt-dlp` shebang.)
 
-If it lands a `.vtt` file, read it, strip VTT headers/styling tags/duplicate lines, and continue to Step 2.5.
+If it lands a `.vtt` file, read it, strip VTT headers/styling tags/duplicate lines, and continue to Step 2.5 (summary) then 2.6 (present).
 
 ## Step 4: Chrome DevTools MCP fallback
 
@@ -154,7 +154,7 @@ Only if Steps 2 and 3 both fail AND Chrome DevTools MCP tools are present in the
    };
    ```
 
-Retry up to 3 times if the result is `"BUFFERING"`. Then `close_page` and continue to Step 2.5.
+Retry up to 3 times if the result is `"BUFFERING"`. Then `close_page` and continue to Step 2.5 (summary) then 2.6 (present).
 
 If all three extraction paths fail, stop and tell the user which tools are missing or broken.
 
@@ -179,18 +179,33 @@ When asked to save:
    ---
    ```
 
-5. **Body**: the full timestamped transcript below the frontmatter.
-6. **Log** under `## [YYYY-MM-DD HH:MM] youtube-transcribe-save <URL>` in `wiki/log.md`.
+5. **Body layout** (both blocks in the same source file, in this order):
+
+   ```markdown
+   # Summary
+
+   <the structured point summary from Step 2.5, verbatim>
+
+   ---
+
+   # Transcript
+
+   <full timestamped transcript, one `[MM:SS] text` line each>
+   ```
+
+   The summary at the top is what `/ingest-url` will primarily compile against; the transcript below is the verbatim backing material.
+
+6. **Log** under `## [YYYY-MM-DD HH:MM] youtube-transcribe-save <URL>` in `wiki/log.md`. Note: source saved, `wiki_compiled: false`, pending `/ingest-url`.
 7. **Commit + push** per CLAUDE.md sync protocol:
    ```bash
    git add -A
    git diff --cached --quiet || git commit -m "youtube-transcribe: <video title>"
    git push origin main
    ```
-8. **Do NOT auto-invoke `/ingest-url`.** The source is queued (`wiki_compiled: false`) for the next manual ingest run.
+8. **Do NOT auto-invoke `/ingest-url`.** The source sits in the pending queue (`wiki_compiled: false`) until the user runs `/ingest-url` themselves. Compilation into wiki pages is that command's job, not this skill's.
 
 ## Not this skill's job
 
-- Compiling wiki pages from the transcript — that's `/ingest-url`.
+- Compiling the source into wiki pages — that's `/ingest-url`. This skill only produces the source file (summary + transcript) and leaves `wiki_compiled: false` for the next ingest run.
 - Classifying into `wiki/synthesis/` — synthesis is a promotion target, never a capture destination (per CLAUDE.md).
-- Summarizing the video's content unless the user asks.
+- Fact-checking or balancing the author's claims. Preserve intent and tone as-is; `/ingest-url`'s atomic-page step is where cross-linking and nuance gets added.
