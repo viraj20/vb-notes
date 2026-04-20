@@ -12,7 +12,7 @@ You are running the `/tasks` command. Read-only — no file writes, no git opera
    - `--status <value>` — filter by status: `todo`, `in-progress`, `blocked`, `done` (optional)
    - No args = show all non-done tasks
 
-2. **Read all files** in `tasks/` that match `TASK-*.md`.
+2. **Read all files** in `tasks/` recursively that match `TASK-*.md` (across all project subdirectories).
 
 3. **Parse frontmatter** from each file: id, title, project, status, priority, due, completed.
 

@@ -16,13 +16,13 @@ You are running the `/task` command. Read `CLAUDE.md` at the vault root first (t
 2. **Sync:** `git pull --rebase origin main`
 
 3. **Find next id:**
-   - Glob `tasks/TASK-*.md`
+   - Glob `tasks/**/*.md` recursively across all project subdirectories
    - Extract the NNN from each filename, take the max, add 1
    - If no files exist, start at TASK-001
 
 4. **Slugify the title:** lowercase, spaces → hyphens, strip characters that aren't alphanumeric or hyphens.
 
-5. **Write `tasks/TASK-NNN-<slug>.md`:**
+5. **Write `tasks/<project>/TASK-NNN-<slug>.md`** (create the project subfolder if it doesn't exist):
    ```yaml
    ---
    id: TASK-NNN
@@ -40,7 +40,7 @@ You are running the `/task` command. Read `CLAUDE.md` at the vault root first (t
 6. **Log** to `wiki/log.md`:
    ```
    ## [YYYY-MM-DD HH:MM] task: TASK-NNN <title>
-   - Created: tasks/TASK-NNN-<slug>.md
+   - Created: tasks/<project>/TASK-NNN-<slug>.md
    ```
 
 7. **Commit and push:**
@@ -50,6 +50,6 @@ You are running the `/task` command. Read `CLAUDE.md` at the vault root first (t
    git push origin main
    ```
 
-8. **Confirm** to the user: "Created **TASK-NNN** — <title> (`tasks/TASK-NNN-<slug>.md`)"
+8. **Confirm** to the user: "Created **TASK-NNN** — <title> (`tasks/<project>/TASK-NNN-<slug>.md`)"
 
 ## ARGUMENTS: $ARGUMENTS

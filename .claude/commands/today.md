@@ -6,7 +6,7 @@ You are running the `/today` command. Read-only — no file writes, no git opera
 
 ## Execution logic
 
-1. **Read all files** in `tasks/` that match `TASK-*.md`.
+1. **Read all files** in `tasks/` recursively that match `TASK-*.md` (across all project subdirectories).
 
 2. **Parse frontmatter** from each: id, title, project, status, priority, due, completed.
 
