@@ -9,7 +9,7 @@ This schema governs every operation. Read it fully before executing any slash co
 ## Invariants (non-negotiable)
 
 1. **Never modify files in `sources/`, `journal/`, `archive/`, or `.trash/`.** These are immutable from your perspective. They are the audit trail.
-2. **You may write only to:** `wiki/`, `inbox/` (for reclassification/promotion), `output/`, and `wiki/log.md`.
+2. **You may write only to:** `wiki/`, `inbox/` (for reclassification/promotion), `output/`, `wiki/log.md`, and `tasks/` (task files and dashboard).
 3. **Every wiki page has frontmatter** — see schema below. Pages without it will be flagged as broken by `/lint-wiki`.
 4. **Every wiki page links to at least one MOC and at least one other wiki page.** Isolated pages are orphans and will be flagged.
 5. **Filename conventions:** `kebab-case.md` for wiki pages. `YYYY-MM-DD-slug.md` for dated sources. Journal files keep their existing `YYYY-MM-DD.md` format.
@@ -156,6 +156,65 @@ Supports `--domain=<name>` to restrict scope. Natural-language scoping ("from my
 
 ### `/audit-vault` (migration-time only)
 Walks all notes in the current PARA structure. For each, proposes: **keep & migrate** (with target), **archive**, **trash**, or **review**. Safety rules: journals never trashed, Kindle highlights never trashed, notes modified within 6 months default to keep. Output `output/vault-audit-<date>.md`. Nothing moves until user approves.
+
+---
+
+## Task system
+
+Tasks live as individual markdown files in `tasks/`. The dashboard at `tasks/dashboard.md` is the one view. The `tasks/` folder is outside the wiki domain — no MOC links or wiki frontmatter required.
+
+### Task file schema
+
+```yaml
+---
+id: TASK-NNN
+title: <task title>
+project: <any label, e.g. work | personal | finances | learning>
+status: todo | in-progress | done | blocked
+priority: high | medium | low
+created: YYYY-MM-DD
+due: YYYY-MM-DD        # optional
+completed: YYYY-MM-DD  # set by /done, omitted otherwise
+tags: []
+---
+```
+
+### `/task <title> --project <name> [--priority high|medium|low] [--due YYYY-MM-DD]`
+
+1. `git pull --rebase origin main`.
+2. Scan `tasks/` for all `TASK-NNN-*.md` files; next id = highest N + 1 (start TASK-001 if none).
+3. Slugify title (lowercase, spaces → hyphens, strip special chars).
+4. Write `tasks/TASK-NNN-<slug>.md` with frontmatter and a blank body. Default `priority: medium` if omitted; omit `due:` if not given.
+5. Append to `wiki/log.md`.
+6. `git add -A && git commit -m "task: TASK-NNN <title>" && git push origin main`.
+
+### `/done <TASK-ID>`
+
+1. `git pull --rebase origin main`.
+2. Glob `tasks/TASK-NNN-*.md` matching the given id (case-insensitive prefix match, e.g. `TASK-001`).
+3. Update frontmatter: `status: done`, `completed: YYYY-MM-DD` (today).
+4. Append to `wiki/log.md`.
+5. `git add -A && git commit -m "done: TASK-NNN" && git push origin main`.
+
+### `/tasks [--project <name>] [--status todo|in-progress|blocked|done]`
+
+Read-only — no writes, no commit.
+
+1. Read all files in `tasks/`.
+2. Filter by `--project` and/or `--status` if given. Default: all non-done tasks.
+3. Print a markdown table: ID | Title | Project | Status | Priority | Due.
+
+### `/today`
+
+Read-only — no writes, no commit.
+
+1. Read all files in `tasks/`.
+2. Print four sections:
+   - **Overdue** — `due < today AND status != done`
+   - **Due Today** — `due = today AND status != done`
+   - **In Progress** — `status = in-progress` (includes tasks with no due date)
+   - **Suggested Focus** — top 3: overdue first, then high priority todo
+3. No git operations.
 
 ---
 
