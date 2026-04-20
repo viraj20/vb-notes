@@ -63,14 +63,51 @@ print(f'LINES={len(out)}')
 "
 ```
 
-### 2.5 Present in-conversation
+### 2.5 Generate a structured point summary (ALWAYS)
 
-Report:
-- Video title
-- Channel / author name
-- Detected subtitle language (default `en`; `youtube_transcript_api --list` shows alternates)
-- Line count
-- The transcript inline if ≤ 200 lines; otherwise the first 40 lines plus a note that the full text is held at `/tmp/yt-<VIDEO_ID>.txt` for the save step
+After extraction succeeds, produce a bullet-point summary of the video. This runs every time, not just on save — it lives in the conversation and gets saved with the source if the user asks.
+
+**Goal**: preserve the author's **meaning, tone, and intent**. Do not sanitize strong opinions. Do not add caveats the author didn't voice. Do not paraphrase into generic business-speak — keep the author's voice intact.
+
+**Structure:**
+
+```markdown
+## <Title> — <Channel>
+
+**Stance.** 1–2 sentences: where the author is coming from, who they're pushing back against, what they're selling or arguing for.
+
+**Main points:**
+
+1. **<Short point headline>.**
+   - Claim: <the claim, with the author's exact numbers>
+   - Argument: <how they justify it, in their framing>
+   - Example / evidence: <their specific example; quote punchy phrases verbatim in "quotes">
+
+2. **<Next point>.**
+   - …
+
+**Asides / bonus.**
+- <tangents, bonus picks, side tips the author slipped in>
+
+**Close.** What the author wants the viewer to do next (subscribe, join community, buy something, act on a timeline).
+```
+
+**Rules for the summary:**
+
+- Use the author's numbers exactly (percentages, dollar amounts, dates) — no rounding unless they rounded.
+- Quote punchy or distinctive phrases verbatim in `"quotes"`. Keep code-switched Hindi/English if present; it's part of the voice.
+- Preserve tone: if the author is dismissive, sound dismissive; if confident, sound confident; if self-promoting, say so.
+- Follow the video's own ordering unless a different order is materially clearer.
+- Don't add warnings, balanced perspectives, or caveats the author didn't state. Not your job to fact-check.
+- Length: scale to the video — ~300 words for <10 min, ~600 words for 20–30 min, ~900+ for long-form.
+
+### 2.6 Present in-conversation
+
+Report, in this order:
+
+1. **Metadata table** — title, channel, language, line count, duration (approx from last timestamp).
+2. **Transcript preview** — full inline if ≤ 200 lines; otherwise the first 40 lines, with a note that the full text is held at `/tmp/yt-<VIDEO_ID>.txt`.
+3. **The structured summary** from Step 2.5.
 
 **Do NOT save to `sources/`. Do NOT run `/ingest-url`. Do NOT create wiki pages.**
 
