@@ -10,7 +10,7 @@ sources:
 
 # Medallion data pipeline
 
-Parent: [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[canonical-enum-layer|Canonical enum layer]] · [[../../learning/books/designing-data-intensive-applications|DDIA]]
+Parent: [[index|Shared MOC]] · [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[canonical-enum-layer|Canonical enum layer]] · [[../../learning/books/designing-data-intensive-applications|DDIA]]
 
 The three-layer pipeline popularised by Databricks and Palantir Foundry: **bronze → silver → gold**. Each layer has a distinct contract and a distinct failure mode.
 
@@ -34,7 +34,7 @@ Every other data platform stops at the transform layer. Foundry's contribution i
 
 ## Where it lands in BMS
 
-For AtomX, the `atomx-pivot-report` skill already performs validate → clean → build steps as a one-shot batch run. Promoting it to a persistent pipeline gives BMS bronze (S3 / DBFS), silver (Delta Live Tables), and gold (Unity Catalog object views) without introducing a new platform. See [[../projects/atomx-ontology-design|AtomX ontology design]] for the concrete layout.
+For AtomX, the `atomx-pivot-report` skill already performs validate → clean → build steps as a one-shot batch run. Promoting it to a persistent pipeline gives BMS bronze (S3 / DBFS), silver (Delta Live Tables), and gold (Unity Catalog object views) without introducing a new platform. See [[../on-ground/atomx-ontology-design|AtomX ontology design]] for the concrete layout.
 
 ## When not to adopt
 

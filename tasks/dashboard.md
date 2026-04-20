@@ -12,7 +12,7 @@ updated: 2026-04-20
 ## 🔴 Overdue
 
 ```dataview
-TABLE title, project, priority, due
+TABLE title, type, priority, due
 FROM "tasks"
 WHERE status != "done" AND due < date(today)
 SORT priority ASC, due ASC
@@ -23,7 +23,7 @@ SORT priority ASC, due ASC
 ## 📅 Due Today
 
 ```dataview
-TABLE title, project, priority
+TABLE title, type, priority
 FROM "tasks"
 WHERE status != "done" AND due = date(today)
 SORT priority ASC
@@ -34,7 +34,7 @@ SORT priority ASC
 ## 🔄 In Progress
 
 ```dataview
-TABLE title, project, priority, due
+TABLE title, type, priority, due
 FROM "tasks"
 WHERE status = "in-progress"
 SORT priority ASC, due ASC
@@ -48,7 +48,7 @@ SORT priority ASC, due ASC
 TABLE title, priority, due
 FROM "tasks"
 WHERE status = "todo"
-GROUP BY project
+GROUP BY type
 SORT priority ASC, due ASC
 ```
 
@@ -57,7 +57,7 @@ SORT priority ASC, due ASC
 ## ✅ Completed This Week
 
 ```dataview
-TABLE title, project, completed
+TABLE title, type, completed
 FROM "tasks"
 WHERE status = "done" AND completed >= date(today) - dur(7 days)
 SORT completed DESC

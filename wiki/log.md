@@ -12,6 +12,20 @@ sources: []
 ## [2026-04-20 00:00] task: TASK-001 create a doc for on ground ops
 - Created: tasks/TASK-001-create-a-doc-for-on-ground-ops.md
 
+## [2026-04-20 12:30] refactor: work wiki → project-scoped + shared; task field project → type
+- wiki/work/ restructured: tools/, concepts/, projects/ retired in favour of <project>/ + shared/
+- Moved (git mv, history preserved):
+  - wiki/work/tools/atomx.md → wiki/work/on-ground/atomx.md
+  - wiki/work/projects/atomx-ontology-design.md → wiki/work/on-ground/atomx-ontology-design.md
+  - wiki/work/concepts/{medallion-data-pipeline,data-ontology,canonical-enum-layer,graph-traversal-hop-depth}.md → wiki/work/shared/
+- Wikilinks updated across all 6 pages
+- New MOCs: wiki/work/on-ground/index.md, wiki/work/shared/index.md
+- Updated: wiki/work/index.md (new project-scoped structure)
+- CLAUDE.md: added "Work domain substructure" section
+- Task system: frontmatter field `project` → `type`; `/task`, `/tasks` flag `--project` → `--type`
+- Updated: tasks/dashboard.md (dataview queries), tasks/work/TASK-001-*.md (frontmatter), .claude/commands/{task,tasks,today,done}.md
+- CLAUDE.md task schema updated
+
 ## [2026-04-20 12:00] ingest-file sources/work/projects/on-ground/research/atomx-research.md
 - Source frontmatter added (wiki_compiled: true) to source file in place
 - Created: wiki/work/tools/atomx.md (entity — BMS portfolio, closed-loop cashless POS)

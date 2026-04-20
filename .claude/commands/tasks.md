@@ -1,6 +1,6 @@
 ---
 description: List and filter tasks from the task tracker
-argument-hint: "[--project <name>] [--status todo|in-progress|blocked|done]"
+argument-hint: "[--type <name>] [--status todo|in-progress|blocked|done]"
 ---
 
 You are running the `/tasks` command. Read-only — no file writes, no git operations.
@@ -8,13 +8,13 @@ You are running the `/tasks` command. Read-only — no file writes, no git opera
 ## Execution logic
 
 1. **Parse arguments from `$ARGUMENTS`:**
-   - `--project <name>` — filter by project (optional)
+   - `--type <name>` — filter by type of work (optional)
    - `--status <value>` — filter by status: `todo`, `in-progress`, `blocked`, `done` (optional)
    - No args = show all non-done tasks
 
-2. **Read all files** in `tasks/` recursively that match `TASK-*.md` (across all project subdirectories).
+2. **Read all files** in `tasks/` recursively that match `TASK-*.md` (across all type subdirectories).
 
-3. **Parse frontmatter** from each file: id, title, project, status, priority, due, completed.
+3. **Parse frontmatter** from each file: id, title, type, status, priority, due, completed.
 
 4. **Apply filters** from the parsed arguments.
 
@@ -22,8 +22,8 @@ You are running the `/tasks` command. Read-only — no file writes, no git opera
 
 6. **Print a markdown table:**
 
-   | ID | Title | Project | Status | Priority | Due |
-   |----|-------|---------|--------|----------|-----|
+   | ID | Title | Type | Status | Priority | Due |
+   |----|-------|------|--------|----------|-----|
    | TASK-001 | ... | ... | ... | ... | ... |
 
    If no tasks match the filter, say so clearly.

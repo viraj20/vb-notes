@@ -10,7 +10,7 @@ sources:
 
 # Canonical enum layer
 
-Parent: [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[medallion-data-pipeline|Medallion data pipeline]] · [[../tools/atomx|AtomX]]
+Parent: [[index|Shared MOC]] · [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[medallion-data-pipeline|Medallion data pipeline]] · [[../on-ground/atomx|AtomX]]
 
 A schema-insulation pattern: raw string values from a source system are mapped to a controlled vocabulary at the transform step, so everything downstream speaks your own enum names — never the vendor's.
 

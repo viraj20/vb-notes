@@ -13,33 +13,29 @@ BookMyShow systems, SRE practice, architecture, teammates, on-call, incidents, i
 
 Parent: [[../index|Wiki index]]
 
-## Sub-areas
+## Structure
 
-_Pages will appear under each section as content is ingested. Headings can be reorganized as the wiki grows._
+Work pages are **project-scoped**. Every page lives under a project folder (`wiki/work/<project>/`) or under `shared/` if it crosses 2+ projects.
 
-### Systems & architecture
-_(empty — populate via `/ingest-file archive/2. Areas/Arch Review/...`)_
+- Project folders hold everything specific to that initiative: entities, tools, designs, meeting notes, incidents.
+- `shared/` holds cross-project patterns — promoted there when a second project starts linking to them.
 
-### Data architecture
-- [[concepts/medallion-data-pipeline|Medallion data pipeline]] — bronze / silver / gold
-- [[concepts/data-ontology|Data ontology]] — Palantir-style semantic layer
-- [[concepts/canonical-enum-layer|Canonical enum layer]] — schema-insulation pattern
-- [[concepts/graph-traversal-hop-depth|Graph traversal & hop depth]] — SQL link table vs graph DB
+## Projects
 
-### SRE practice
-_(empty — see `archive/loose/SRE KRAs and Roles.md` for substantive seed content)_
+- [[on-ground/index|On-ground]] — events operations, cashless (AtomX), stall ops, settlement
 
-### Incidents & RCAs
-_(empty — strong seeds in `archive/loose/Cold Play.md`, `ColdPlay Load Handling.md`, `Learning from ColdPlay.md`, `archive/3. Resources/Issues & RCA/`)_
+_(add new project folders as they come up: `wiki/work/<project>/index.md`)_
+
+## Shared
+
+- [[shared/index|Shared — cross-project patterns]] — data architecture, SRE practice, reliability patterns
+
+## Cross-cutting (not yet project-scoped)
+
+_Pages below will move into a project folder or into `shared/` once the scoping becomes clear._
 
 ### People (BMS teammates)
 _(empty — 12 teammate stubs in `archive/3. Resources/People/`)_
-
-### Tools
-- [[tools/atomx|AtomX]] — closed-loop cashless POS platform, BMS portfolio company
-
-### Projects
-- [[projects/atomx-ontology-design|AtomX ontology design]] — promoting the batch pipeline to a persistent medallion + ontology layer (draft)
 
 ### Meetings
 _(empty — `archive/Meeting Notes/` and `archive/3. Resources/Meeting Notes/`)_

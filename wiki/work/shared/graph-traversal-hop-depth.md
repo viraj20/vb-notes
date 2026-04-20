@@ -10,7 +10,7 @@ sources:
 
 # Graph traversal & hop depth
 
-Parent: [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[../../learning/books/designing-data-intensive-applications|DDIA]]
+Parent: [[index|Shared MOC]] · [[../index|Work MOC]] · Related: [[data-ontology|Data ontology]] · [[../../learning/books/designing-data-intensive-applications|DDIA]]
 
 When does a relational link table stop being the right substrate, and when does a graph DB (Neo4j, Neptune, Apache AGE) start earning its complexity? The heuristic is **hop depth**.
 

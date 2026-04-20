@@ -10,7 +10,7 @@ sources:
 
 # Data ontology
 
-Parent: [[../index|Work MOC]] · Related: [[medallion-data-pipeline|Medallion data pipeline]] · [[canonical-enum-layer|Canonical enum layer]] · [[graph-traversal-hop-depth|Graph traversal & hop depth]] · [[../projects/atomx-ontology-design|AtomX ontology design]]
+Parent: [[index|Shared MOC]] · [[../index|Work MOC]] · Related: [[medallion-data-pipeline|Medallion data pipeline]] · [[canonical-enum-layer|Canonical enum layer]] · [[graph-traversal-hop-depth|Graph traversal & hop depth]] · [[../on-ground/atomx-ontology-design|AtomX ontology design]]
 
 An ontology is a semantic layer sitting on top of cleaned tables. It converts columns into typed objects that applications can query without ever touching the underlying dataset. Palantir Foundry is the reference implementation; the pattern can be built on Databricks, dbt, or plain Postgres.
 

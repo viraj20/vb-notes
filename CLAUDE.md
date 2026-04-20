@@ -32,7 +32,7 @@ This schema governs every operation. Read it fully before executing any slash co
 
 | Domain | Scope |
 |---|---|
-| **work** | BookMyShow systems, SRE practices applied to BMS, on-call, teammates, architecture, incidents, BMS-specific tooling |
+| **work** | BookMyShow systems, SRE practices applied to BMS, on-call, teammates, architecture, incidents, BMS-specific tooling. **Internally project-scoped** — see "Work domain substructure" below. |
 | **finances** | Personal money management, investing, taxes, passive income, specific instruments/accounts, India-specific finance |
 | **learning** | General knowledge from books, articles, podcasts, videos, papers (CS, management, philosophy, psychology, science, non-BMS SRE) |
 | **entertainment** | Movies, trips, photography, restaurants, hobbies, recreation |
@@ -40,6 +40,27 @@ This schema governs every operation. Read it fully before executing any slash co
 | **synthesis** | Cross-domain pages bridging 2+ of the above (never a capture destination — always compiled) |
 
 A seventh structural folder `daily-routine` is handled by `journal/`, not `wiki/`. Never promote journal content into wiki unless the user explicitly opts it.
+
+---
+
+## Work domain substructure
+
+Unlike other domains, `wiki/work/` is **project-scoped**. Every page lives under either a project folder or `shared/`:
+
+```
+wiki/work/
+  <project>/           project-specific pages (e.g. on-ground/, checkout/, ticketing/)
+    index.md           project MOC
+    *.md               entities, tools, designs, meeting notes, incidents for this project
+  shared/              cross-project patterns (used by 2+ projects)
+    index.md           shared MOC
+    *.md               SRE practice, data architecture, reliability patterns
+  index.md             work MOC (lists projects + shared)
+```
+
+**Placement rule:** A new work page starts in the most specific project folder. It gets promoted to `shared/` when a *second* project starts linking to it — mirror of the global `wiki/synthesis/` promotion pattern, one scope smaller.
+
+"Project" is the single project concept in the vault. The task system uses `type` (type of work) as its partition label to avoid overloading the word.
 
 ---
 
@@ -169,7 +190,7 @@ Tasks live as individual markdown files in `tasks/`. The dashboard at `tasks/das
 ---
 id: TASK-NNN
 title: <task title>
-project: <any label, e.g. work | personal | finances | learning>
+type: <any label, e.g. work | personal | finances | learning>
 status: todo | in-progress | done | blocked
 priority: high | medium | low
 created: YYYY-MM-DD
@@ -179,12 +200,14 @@ tags: []
 ---
 ```
 
-### `/task <title> --project <name> [--priority high|medium|low] [--due YYYY-MM-DD]`
+`type` is the type of work — kept distinct from the wiki's "project" concept (which only exists inside `wiki/work/`).
+
+### `/task <title> --type <name> [--priority high|medium|low] [--due YYYY-MM-DD]`
 
 1. `git pull --rebase origin main`.
-2. Scan `tasks/` for all `TASK-NNN-*.md` files; next id = highest N + 1 (start TASK-001 if none).
+2. Scan `tasks/` recursively for all `TASK-NNN-*.md` files; next id = highest N + 1 (start TASK-001 if none).
 3. Slugify title (lowercase, spaces → hyphens, strip special chars).
-4. Write `tasks/TASK-NNN-<slug>.md` with frontmatter and a blank body. Default `priority: medium` if omitted; omit `due:` if not given.
+4. Write `tasks/<type>/TASK-NNN-<slug>.md` with frontmatter and a blank body. Default `priority: medium` if omitted; omit `due:` if not given. Create the type subfolder if needed.
 5. Append to `wiki/log.md`.
 6. `git add -A && git commit -m "task: TASK-NNN <title>" && git push origin main`.
 
@@ -196,13 +219,13 @@ tags: []
 4. Append to `wiki/log.md`.
 5. `git add -A && git commit -m "done: TASK-NNN" && git push origin main`.
 
-### `/tasks [--project <name>] [--status todo|in-progress|blocked|done]`
+### `/tasks [--type <name>] [--status todo|in-progress|blocked|done]`
 
 Read-only — no writes, no commit.
 
-1. Read all files in `tasks/`.
-2. Filter by `--project` and/or `--status` if given. Default: all non-done tasks.
-3. Print a markdown table: ID | Title | Project | Status | Priority | Due.
+1. Read all files in `tasks/` recursively.
+2. Filter by `--type` and/or `--status` if given. Default: all non-done tasks.
+3. Print a markdown table: ID | Title | Type | Status | Priority | Due.
 
 ### `/today`
 

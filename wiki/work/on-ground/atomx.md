@@ -10,7 +10,7 @@ sources:
 
 # AtomX
 
-Parent: [[../index|Work MOC]] · Related: [[../concepts/data-ontology|Data ontology]] · [[../projects/atomx-ontology-design|AtomX ontology design]]
+Parent: [[index|On-ground MOC]] · [[../index|Work MOC]] · Related: [[../shared/data-ontology|Data ontology]] · [[atomx-ontology-design|AtomX ontology design]]
 
 AtomX is a closed-loop, stored-value cashless payments platform built for live events, hospitals, and campuses. BookMyShow strategic investment, 2019.
 
@@ -37,4 +37,4 @@ Known dirty patterns: Unix timestamps appearing in `INVOICE TYPE` (cleaned to `T
 
 ## Why it matters for BMS
 
-Event-scale cashless data has a tight dependency on schema stability — AtomX column names and string enums are the failure surface. See [[../concepts/canonical-enum-layer|Canonical enum layer]] for the schema insulation pattern and [[../projects/atomx-ontology-design|AtomX ontology design]] for the proposed object model.
+Event-scale cashless data has a tight dependency on schema stability — AtomX column names and string enums are the failure surface. See [[../shared/canonical-enum-layer|Canonical enum layer]] for the schema insulation pattern and [[atomx-ontology-design|AtomX ontology design]] for the proposed object model.

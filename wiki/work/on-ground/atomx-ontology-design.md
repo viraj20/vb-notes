@@ -10,7 +10,7 @@ sources:
 
 # AtomX ontology design
 
-Parent: [[../index|Work MOC]] · Related: [[../tools/atomx|AtomX]] · [[../concepts/data-ontology|Data ontology]] · [[../concepts/medallion-data-pipeline|Medallion data pipeline]] · [[../concepts/canonical-enum-layer|Canonical enum layer]] · [[../concepts/graph-traversal-hop-depth|Graph traversal & hop depth]]
+Parent: [[index|On-ground MOC]] · [[../index|Work MOC]] · Related: [[atomx|AtomX]] · [[../shared/data-ontology|Data ontology]] · [[../shared/medallion-data-pipeline|Medallion data pipeline]] · [[../shared/canonical-enum-layer|Canonical enum layer]] · [[../shared/graph-traversal-hop-depth|Graph traversal & hop depth]]
 
 A proposal for promoting the batch `atomx-pivot-report` pipeline into a persistent medallion + ontology layer on BMS's existing Databricks stack. Draft — not yet approved.
 
@@ -73,7 +73,7 @@ No new platform. Everything BMS already runs.
 
 - **Palantir Foundry** — reference implementation. Purpose-built but seven-figure contracts and closed-source. Not recommended at BMS scale.
 - **Apache Atlas + Databricks Unity Catalog** — open-source metadata/lineage on existing Databricks. Lowest-friction path. **Recommended.**
-- **dbt + Neo4j** — dbt models as object definitions, Neo4j for graph traversal. Useful *if* deep-traversal questions emerge; see [[../concepts/graph-traversal-hop-depth|hop depth]].
+- **dbt + Neo4j** — dbt models as object definitions, Neo4j for graph traversal. Useful *if* deep-traversal questions emerge; see [[../shared/graph-traversal-hop-depth|hop depth]].
 - **Microsoft Fabric** — OneLake + semantic layer. Reasonable alternative only if the org becomes Azure-aligned.
 - **Atlan / DataHub** — metadata catalogs. Good for discovery and governance, not for building apps on top.
 
@@ -81,7 +81,7 @@ No new platform. Everything BMS already runs.
 
 1. Promote `clean.py` to a Delta Live Tables pipeline. Replace the manual post-event run with a scheduled / triggered pipeline writing to `atomx_silver.*`.
 2. Create `atomx_ontology.links` populated by a transform that joins silver tables and emits one row per relationship.
-3. Migrate `TYPE_MAP` and `MODE_MAP` from `clean.py` into `atomx_config.enum_mappings` with validity windows. See [[../concepts/canonical-enum-layer|canonical enum layer]].
+3. Migrate `TYPE_MAP` and `MODE_MAP` from `clean.py` into `atomx_config.enum_mappings` with validity windows. See [[../shared/canonical-enum-layer|canonical enum layer]].
 4. Define object views over silver exposing canonical property names (`txn_type`, `payment_mode`).
 5. Wire a live monitoring dashboard in Grafana / Metabase against the object views. Key metrics: transaction success rate by device, NFC vs cash split by stall, reversal rate per event, stall-wise revenue.
 6. Re-evaluate graph DB trigger when cross-event loyalty or fraud-network detection becomes a concrete requirement.
