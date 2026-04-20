@@ -9,6 +9,9 @@ sources: []
 
 # Operation log
 
+## [2026-04-20 00:00] task: TASK-001 create a doc for on ground ops
+- Created: tasks/TASK-001-create-a-doc-for-on-ground-ops.md
+
 ## [2026-04-19 00:00] query "can you share one quote from a book I have read"
 - Pages consulted: 3 (wiki/index.md, wiki/learning/index.md, wiki/learning/books/siddhartha.md)
 - Saved to: not saved
