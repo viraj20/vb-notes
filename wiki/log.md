@@ -9,6 +9,10 @@ sources: []
 
 # Operation log
 
+## [2026-04-24 18:07] brainstorm-capture: indoor location tracking & navigation system
+- Created: wiki/ideas/indoor-location-tracking-system.md
+- Covers: BLE-based indoor positioning, navigation, hardware requirements, scaling path from home POC to 25k-person office
+
 ## [2026-04-20 00:00] task: TASK-001 create a doc for on ground ops
 - Created: tasks/TASK-001-create-a-doc-for-on-ground-ops.md
 
