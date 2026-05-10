@@ -3,7 +3,7 @@ type: moc
 domain: ideas
 status: live
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-05-10
 sources: []
 ---
 
@@ -15,7 +15,8 @@ Parent: [[../index|Wiki index]]
 
 ## Active drafts
 
-_(empty — drafts land here as `status: draft`. Promote to `status: live` when they crystallize, or archive if stale.)_
+- [[indoor-location-tracking-system|Indoor Location Tracking & Navigation System]] — BLE-based indoor positioning, scaling from home POC to 25k-person office.
+  - [[indoor-mapping-poc-plan|Indoor Mapping POC — Step-by-Step Plan]] — concrete build plan: 3 Android phones as beacons, laptop backend, two-phase delivery (live dot → navigation).
 
 ## Promotion targets
 

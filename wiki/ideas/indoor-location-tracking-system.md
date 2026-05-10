@@ -3,7 +3,7 @@ type: concept
 domain: ideas
 status: draft
 created: 2026-04-24
-updated: 2026-04-24
+updated: 2026-05-10
 sources: []
 ---
 
@@ -164,4 +164,5 @@ The BLE beacon hardware scales linearly and cheaply. The bottleneck at 25k is th
 
 ## Links
 
-- [[wiki/ideas/index|Ideas MOC]]
+- [[indoor-mapping-poc-plan|Indoor Mapping POC — Step-by-Step Plan]] — concrete build plan for the home-scale POC (3 Android phones as BLE beacons, laptop backend, web dashboard)
+- [[index|Ideas MOC]]

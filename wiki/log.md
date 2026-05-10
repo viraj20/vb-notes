@@ -469,3 +469,11 @@ Use `/lint-wiki` to audit; use `/query` to ask questions; use `/ingest-url`, `/i
   - Grouped-citation format `(loc N, N)` still present on `the-monk-who-sold-his-ferrari.md` (pre-existing; lint regex undercounts but page clears target anyway).
   - ~20 new-concept candidates surfaced across batches 7–11 and the DeMarco outlier — parked; not created this pass per plan's "not adding new concept pages" non-goal.
 - **The 60% highlight-coverage retrofit is complete.** Schema (`CLAUDE.md` + `ingest-url` skill) has been updated so future first-compiles honor the rule natively.
+
+## [2026-05-10 00:00] indoor mapping POC plan — drafted comprehensive build doc
+- Created: `wiki/ideas/indoor-mapping-poc-plan.md` (`type: concept`, `status: draft`) — step-by-step POC plan scoped to user's hardware (3 old Android phones as fixed BLE beacons, laptop backend, web dashboard).
+- Plan covers: architecture, BOM, project layout, Phase 0 prep (floor plan + beacon placement), Phase 1 (live dot — beacon advertising config, bleak-based scanner, FastAPI backend, calibration ritual with log-distance path-loss model fit, weighted-least-squares trilateration, EMA smoothing, dashboard, validation rubric), Phase 1.8 tracker swap to daily phone via Web Bluetooth, Phase 2 (navigation — occupancy grid, A*, semantic graph, turn-by-turn UI), risks/gotchas, milestones M0–M8, decisions log.
+- Updated: `wiki/ideas/indoor-location-tracking-system.md` — added Links entry pointing at the new POC plan; bumped `updated: 2026-05-10`.
+- Updated: `wiki/ideas/index.md` — replaced the empty "Active drafts" placeholder with entries for the parent idea page and the new POC plan; bumped `updated: 2026-05-10`.
+- Scope decisions captured in plan via `AskUserQuestion`: phones-as-beacons (not as trackers), all-Android, two-phase rollout (live dot → navigation), laptop + web dashboard (no Pi, no React Native).
+- Branch: `claude/indoor-mapping-poc-plan-itcCl` (feature branch per session config; not pushed to main).
