@@ -9,6 +9,13 @@ sources: []
 
 # Operation log
 
+## [2026-05-20 00:00] india-stock-radar: DEEDEV fundamental research
+- Created: output/DEEDEV-research-2026-05-20.md
+- Symbol: DEEDEV | DEE Development Engineers Limited | BSE 544198 | ISIN INE841L01016
+- Sources: web search aggregators (BSE/NSE/Screener direct fetch blocked — MEDIUM confidence)
+- Concall depth: Q1FY26, Q2FY26, Q3FY26 (via news summaries)
+- Key findings: Strong order book ₹1,909 Cr, $40M US export win, capacity doubled, Anjar backward integration live; RPT scrutiny needed (₹88 Cr from promoter entity), ROE/ROCE below benchmarks, one-time labor code charge needs verification
+
 ## [2026-04-24 18:07] brainstorm-capture: indoor location tracking & navigation system
 - Created: wiki/ideas/indoor-location-tracking-system.md
 - Covers: BLE-based indoor positioning, navigation, hardware requirements, scaling path from home POC to 25k-person office
